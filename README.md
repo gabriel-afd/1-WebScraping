@@ -2,6 +2,7 @@
 
 Este projeto realiza web scraping em Python utilizando a biblioteca Selenium para acessar o site da Agência Nacional de Saúde Suplementar (ANS), baixar os arquivos PDF dos Anexos I e II referentes ao Rol de Procedimentos e Eventos em Saúde, e compactá-los em um único arquivo `.zip`.
 
+
 ---
 
 ## Objetivo do Teste
@@ -18,6 +19,18 @@ O objetivo é automatizar o processo de:
    - Anexo II
 
 3. Compactar os arquivos baixados em um **arquivo ZIP**.
+4. Um teste adicional de checagem de arquivos baixados foi realizado
+
+Com o intuito de demonstrar varaidas opções para resolução do teste, adotou-se três diferentes maneiras possíveis de realizar **Web Scraping.**  
+Em **Python** o código para **web scraping** foi desenvolvido com duas opções de libs distintas, BeautifulSoup e Selenium. O **web scraping** com BeautifulSoup se mostra mais rápido porque é um framework adequado para páginas estáticas. Selenium é adequado para páginas dinâmicas e requer instalação de drives como o ChromeDrive, trata-se de uma ferramenta de automação utilizada no navegador, você poderá notar que o código com Selenium tem execução bem mais lenta quando comparado ao código com  BeautifulSoup. Em termos de performance e por se tratar de uma página estática, recomenda-se utilizar BeautifulSoup.
+Ademais, também foi desenvolvido um código para **web scraping** utilizado Java a partir da biblioteca Jsoup, o código está estruturado na arquitetura MVC.
+
+# Baixar Projeto
+Para fazer download do projeto para sua máquina execute via CMD:
+
+```
+git clone https://github.com/gabriel-afd/1-WebScraping.git
+```
 
 ---
 ---
@@ -244,11 +257,8 @@ public class Main {
 }
 ```
 
-5. Execute a aplicação via terminal ou diretamente pela IDE:
+5. Execute a aplicação diretamente pela IDE(IntelliJ ou Eclipse):
 
-```bash
-java -cp target/webScraping-1.0-SNAPSHOT.jar org.gabrielM.Main
-```
 ---
 
 ### Tecnologias Utilizadas:
