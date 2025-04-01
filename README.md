@@ -21,7 +21,7 @@ O objetivo é automatizar o processo de:
 3. Compactar os arquivos baixados em um **arquivo ZIP**.
 4. Um teste adicional de checagem de arquivos baixados foi realizado
 
-Com o intuito de demonstrar varaidas opções para resolução do teste, adotou-se três diferentes maneiras possíveis de realizar **Web Scraping.**  
+Com o intuito de demonstrar variadas opções para resolução do teste, adotou-se três diferentes maneiras possíveis de realizar **Web Scraping.**  
 Em **Python** o código para **web scraping** foi desenvolvido com duas opções de libs distintas, BeautifulSoup e Selenium. O **web scraping** com BeautifulSoup se mostra mais rápido porque é um framework adequado para páginas estáticas. Selenium é adequado para páginas dinâmicas e requer instalação de drives como o ChromeDrive, trata-se de uma ferramenta de automação utilizada no navegador, você poderá notar que o código com Selenium tem execução bem mais lenta quando comparado ao código com  BeautifulSoup. Em termos de performance e por se tratar de uma página estática, recomenda-se utilizar BeautifulSoup.
 Ademais, também foi desenvolvido um código para **web scraping** utilizado Java a partir da biblioteca Jsoup, o código está estruturado na arquitetura MVC.
 
