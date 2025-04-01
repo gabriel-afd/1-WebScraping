@@ -20,9 +20,7 @@ O objetivo é automatizar o processo de:
 3. Compactar os arquivos baixados em um **arquivo ZIP**.
 
 ---
-
 ---
-
 ## Projeto com BeautifulSoup
 
 Este script realiza o scraping utilizando apenas requisições HTTP com `requests` e parsing de HTML com `BeautifulSoup`, sem precisar abrir um navegador.
@@ -99,7 +97,7 @@ O script fará:
 - **OS**: manipulação de diretórios e verificação de arquivos
 
 ---
-
+---
 ## Projeto com Selenium
 
 ## Requisitos
@@ -160,7 +158,7 @@ required_packages = ['selenium', 'webdriver-manager', 'requests']
 
 ---
 
-### `scraping_ans.py`
+### `scraping.py`
 Script principal:
 
 1. **Configura o navegador** com opção de download para a pasta `downloads`.
@@ -204,6 +202,66 @@ Script principal:
 - **OS / TIME**: manipulação de sistema de arquivos e pausas na execução para esperar carregamento da página.
 
 ---
+---
+
+## Projeto com Java
+
+O projeto em Java foi estruturado seguindo o padrão de arquitetura **MVC (Model-View-Controller)** para promover uma organização clara e separação de responsabilidades.
+
+### Estrutura de Pacotes:
+
+- **`model`**
+  - **Classe `PdfFile`**: representa um PDF com sua URL e nome de arquivo. Contém métodos para obter e definir esses dados. Também encapsula a lógica para extrair o nome do arquivo a partir da URL.
+
+- **`controller`**
+  - **Classe `DownloadController`**: orquestra toda a execução do processo. Cria a pasta de downloads, chama o `ScraperService` para obter os links, o `DownloadService` para baixar os arquivos, e o `ZipService` para compactar tudo em um ZIP.
+
+- **`service`**
+  - **Classe `ScraperService`**: faz scraping da página da ANS usando a biblioteca `Jsoup` e retorna uma lista de objetos `PdfFile` com os links dos PDFs Anexo I e II.
+  - **Classe `DownloadService`**: utiliza o `HttpClient` da JDK para baixar os PDFs e salvá-los localmente como arquivos físicos.
+  - **Classe `ZipService`**: recebe os arquivos baixados e cria um arquivo `.zip` utilizando a API de compressão da JDK.
+
+---
+### Como Executar o Projeto Java:
+
+1. Certifique-se de ter o **Java 22** e o **Maven** instalados.
+
+2. Clone ou baixe o projeto.
+
+3. Compile o projeto com Maven:
+
+```bash
+mvn clean package
+```
+
+4. Após a compilação, execute a aplicação a partir da classe que contém o método `main` e que instancia o `DownloadController`. Exemplo:
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        new DownloadController().execute();
+    }
+}
+```
+
+5. Execute a aplicação via terminal ou diretamente pela IDE:
+
+```bash
+java -cp target/webScraping-1.0-SNAPSHOT.jar org.gabrielM.Main
+```
+---
+
+### Tecnologias Utilizadas:
+
+- **Java 22**
+- **Jsoup**: biblioteca para fazer parsing e scraping de HTML
+- **HttpClient**: cliente HTTP moderno da JDK para requisições
+- **Java I/O**: manipulação de arquivos
+- **Java Zip**: compactação de arquivos
+- **Maven**: gerenciamento do projeto e dependências
+ 
+  
+
 
 ## Autor
 Gabriel Medeiros
