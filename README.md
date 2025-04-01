@@ -21,6 +21,87 @@ O objetivo é automatizar o processo de:
 
 ---
 
+---
+
+## Projeto com BeautifulSoup
+
+Este script realiza o scraping utilizando apenas requisições HTTP com `requests` e parsing de HTML com `BeautifulSoup`, sem precisar abrir um navegador.
+
+### Bibliotecas utilizadas:
+- `requests` - faz a requisição ao site da ANS
+- `beautifulsoup4` - extrai os links dos arquivos PDF da página HTML
+- `zipfile` - compacta os arquivos
+
+---
+
+## Estrutura do Projeto
+
+```
+.
+├── install_requirements_bs.py      # Instala as dependências necessárias para BeautifulSoup
+├── scraping.py                     # Script principal com BeautifulSoup
+├── downloads/                      # Pasta onde os PDFs serão salvos
+├── TesteGabrielMedeiros.zip        # Arquivo gerado com os PDFs compactados
+```
+
+---
+
+## Como Executar
+
+### 1. Instalar as dependências (uma única vez):
+Execute o script a seguir para instalar automaticamente as bibliotecas necessárias:
+
+```bash
+python install_requirements_bs.py
+```
+
+### 2. Rodar o script principal:
+
+```bash
+python scraping.py
+```
+
+O script fará:
+- Acesso direto à página da ANS
+- Busca e filtragem de links PDF de Anexo I e II
+- Download dos arquivos para a pasta `downloads/`
+- Verificação dos arquivos baixados
+- Geração do arquivo `TesteGabrielMedeiros.zip`
+
+---
+
+## Funcionalidade das Funções
+
+- **`pdf_links()`**
+  - Realiza uma requisição GET para a página da ANS
+  - Analisa o HTML com `BeautifulSoup`
+  - Busca por todas as tags `<a>` com links que terminam em `.pdf` e contenham "Anexo_I" ou "Anexo_II"
+
+- **`download_pdfs(links, destination_folder)`**
+  - Faz o download de cada PDF e salva na pasta local
+  - Exibe mensagens de sucesso ou erro para cada arquivo
+
+- **`check_files(files)`**
+  - Verifica a existência dos arquivos após o download
+
+- **`zip_files(files, zip_name)`**
+  - Compacta os arquivos baixados em um único arquivo `.zip`
+
+
+---
+
+## Tecnologias Utilizadas (Resumo)
+
+- **Python**: linguagem principal do projeto
+- **Requests**: para baixar o HTML da página e os arquivos PDF
+- **BeautifulSoup**: para fazer parsing do HTML e extrair os links
+- **Zipfile**: compacta os arquivos baixados em um único `.zip`
+- **OS**: manipulação de diretórios e verificação de arquivos
+
+---
+
+## Projeto com Selenium
+
 ## Requisitos
 
 Antes de rodar o script principal, é necessário instalar as dependências do projeto. Isso pode ser feito com o script `install_requirements.py`, que instala automaticamente as bibliotecas necessárias.
@@ -37,7 +118,7 @@ Antes de rodar o script principal, é necessário instalar as dependências do p
 ```
 .
 ├── install_requirements.py       # Instala as dependências necessárias
-├── scraping_ans.py               # Script principal que executa o scraping
+├── scraping.py                   # Script principal que executa o scraping
 ├── downloads/                    # Pasta onde os PDFs serão salvos
 ├── TesteGabrielMedeiros.zip      # Arquivo gerado com os PDFs compactados
 ```
@@ -56,7 +137,7 @@ python install_requirements.py
 ### 2. Rodar o script principal:
 
 ```bash
-python scraping_ans.py
+python scraping.py
 ```
 
 O script fará:
@@ -128,4 +209,3 @@ Script principal:
 Gabriel Medeiros
 
 Este projeto foi desenvolvido como parte de um teste técnico envolvendo Web Scraping em Python.
-
